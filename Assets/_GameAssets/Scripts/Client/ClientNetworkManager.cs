@@ -8,12 +8,6 @@ public class ClientNetworkManager : NetworkManager
     {
         UnityTransport transport = gameObject.AddComponent<UnityTransport>();
         NetworkConfig.NetworkTransport = transport;
-
-        Player player = await PlayerService.GetPlayer("steam_id");
-
-        Debug.Log("Player retrieved: " + player.GamerTag);
-
-        StartClient();
         Debug.Log("Client Ready");
     }
 }

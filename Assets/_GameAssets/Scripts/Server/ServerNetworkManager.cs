@@ -5,8 +5,10 @@ using System;
 
 public class ServerNetworkManager : NetworkManager
 {
-    private void OnEnable()
+    private async void OnEnable()
     {
+        await GameServerService.RegisterServer();
+
         UnityTransport transport = gameObject.AddComponent<UnityTransport>();
         NetworkConfig.NetworkTransport = transport;
 
@@ -15,6 +17,8 @@ public class ServerNetworkManager : NetworkManager
         OnClientDisconnectCallback += ServerNetworkManager_OnClientDisconnected;
 
         StartServer();
+
+        await GameServerService.ReadyForPlayers();
     }
 
     private void ServerNetworkManager_OnServerStarted()

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class Init : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class Init : MonoBehaviour
         else
         {
             Debug.Log("Client Build");
-            Instantiate(_clientGo);
+            SceneManager.LoadSceneAsync(Consts.SceneNames.MENU_SCENE);
         }
 
         Destroy(gameObject);
